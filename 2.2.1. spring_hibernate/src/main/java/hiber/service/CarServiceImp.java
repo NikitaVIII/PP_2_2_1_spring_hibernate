@@ -11,8 +11,12 @@ import java.util.List;
 
 @Service
 public class CarServiceImp implements CarService {
-    @Autowired
-    private CarDao carDao;
+
+    private final CarDao carDao;
+
+    public CarServiceImp(CarDao carDao) {
+        this.carDao = carDao;
+    }
 
     @Transactional
     @Override
@@ -26,9 +30,4 @@ public class CarServiceImp implements CarService {
         return carDao.listCars();
     }
 
-    @Transactional
-    @Override
-    public User getUserByCar(String model, int series) {
-        return carDao.getUserByCar(model, series);
-    }
 }

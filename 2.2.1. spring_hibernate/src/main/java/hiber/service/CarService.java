@@ -10,5 +10,4 @@ public interface CarService {
 
     List<Car> listCars();
 
-    User getUserByCar(String model, int series);
 }

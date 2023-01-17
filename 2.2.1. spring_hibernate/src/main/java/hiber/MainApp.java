@@ -44,7 +44,7 @@ public class MainApp {
          System.out.println();
       }
 
-      System.out.println(carService.getUserByCar("model2", 456).getFirstName());
+      System.out.println(userService.getUserByCar("model2", 456).getFirstName());
 
 
       context.close();

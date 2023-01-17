@@ -12,8 +12,11 @@ import java.util.List;
 
 @Repository
 public class CarDaoImp implements CarDao {
-    @Autowired
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
+
+    public CarDaoImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void add(Car car) {
@@ -26,13 +29,4 @@ public class CarDaoImp implements CarDao {
         return query.getResultList();
     }
 
-    @Override
-    public User getUserByCar(String model, int series) {
-        Query query = sessionFactory.getCurrentSession()
-                .createQuery(" from Car car join fetch car.user " +
-                "where car.model=:m and car.series=:s")
-                .setParameter("m", model).setParameter("s", series);
-        Car car = (Car) query.getSingleResult();
-        return car.getUser();
-    }
 }
